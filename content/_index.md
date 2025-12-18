@@ -27,7 +27,7 @@ _teaser_video = ""
 Neural shape representation generally refers to representing 3D geometry using neural networks, e.g., computing a signed distance or occupancy value at a specific spatial position. 
 In this paper we present a neural-network architecture suitable for accurate encoding of 3D shapes in a single forward pass.
 Our architecture is based on a multi-scale hybrid system incorporating graph-based and voxel-based components, as well as a continuously differentiable decoder. 
-The hybrid system includes a novel way of voxelizing point-based features in neural networks by projecting the point ``feature-field'' onto a grid.
+The hybrid system includes a novel way of voxelizing point-based features in neural networks by projecting the point "feature-field" onto a grid.
 This projection is insensitive to local point density, and we show that it can be used to obtain smoother and more detailed reconstructions, in particular when combined with oriented point clouds as input.
 Our architecture also requires only a single forward pass, instead of the latent-code optimization used in auto-decoder methods.
 Furthermore, our network is trained to solve the well-established eikonal equation and only requires knowledge of the zero-level set for training and inference. 
