@@ -1,0 +1,19 @@
+{
+  "name": "hyve",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "tailwindcss -i styles/input.css -o static/style.css --minify",
+    "dev": "tailwindcss -i styles/input.css -o static/style.css --watch"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.18",
+    "@tailwindcss/typography": "^0.5.19",
+    "@types/bun": "latest",
+    "tailwindcss": "^4.1.18"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

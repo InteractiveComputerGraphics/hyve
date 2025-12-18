@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ section.title }}</title>
+    <link rel="stylesheet" href="{{ get_url(path="style.css") }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Google Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-white text-gray-900 antialiased">
+    <div class="max-w-5xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl mb-6">
+                {{ section.title }}
+            </h1>
+            
+            <!-- Authors -->
+            <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 mb-6 text-lg sm:text-xl">
+                {% for author in section.extra.authors %}
+                <div class="relative group">
+                    <a href="{{ author.url }}" class="text-blue-600 hover:text-blue-800 hover:underline">
+                        {{ author.name }}
+                    </a>
+                    <sup class="text-sm text-gray-500">
+                        {% for idx in author.affiliation_indices %}{{ idx + 1 }}{% if not loop.last %},{% endif %}{% endfor %}
+                    </sup>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Affiliations -->
+            <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 mb-8 text-base sm:text-lg text-gray-600">
+                {% for affiliation in section.extra.affiliations %}
+                <div class="flex items-center gap-1">
+                    <sup>{{ loop.index }}</sup>
+                    <a href="{{ affiliation.url }}" class="hover:text-gray-900">{{ affiliation.name }}</a>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Links -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                {% for link in section.extra.links %}
+                <a href="{{ link.url }}" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-gray-900 hover:bg-gray-800 shadow-lg transition-all hover:-translate-y-0.5">
+                    {% if link.icon == "pdf" %}
+                        <i class="fas fa-file-pdf mr-2"></i>
+                    {% elif link.icon == "ai" %}
+                        <i class="ai ai-arxiv mr-2"></i>
+                    {% elif link.icon == "youtube" %}
+                        <i class="fab fa-youtube mr-2"></i>
+                    {% elif link.icon == "github" %}
+                        <i class="fab fa-github mr-2"></i>
+                    {% elif link.icon == "data" %}
+                        <i class="fas fa-database mr-2"></i>
+                    {% else %}
+                        <i class="fas fa-link mr-2"></i>
+                    {% endif %}
+                    {{ link.name }}
+                </a>
+                {% endfor %}
+            </div>
+        </header>
+
+        <!-- Teaser -->
+        {% if section.extra.teaser_video %}
+        <div class="mb-16 rounded-xl overflow-hidden shadow-2xl border border-gray-200">
+            <video class="w-full" autoplay loop muted playsinline>
+                <source src="{{ section.extra.teaser_video }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        {% endif %}
+
+        <!-- Content -->
+        <main class="prose prose-lg prose-gray mx-auto text-justify">
+            {{ section.content | safe }}
+        </main>
+
+        <footer class="mt-24 border-t border-gray-200 pt-12 pb-12 text-center text-gray-500">
+            <p>
+                This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="text-blue-600 hover:underline">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p class="mt-2">
+                Template adapted from <a href="https://github.com/nerfies/nerfies.github.io" class="text-blue-600 hover:underline">Nerfies</a>.
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
