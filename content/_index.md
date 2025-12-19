@@ -14,10 +14,10 @@ affiliations = [
     { name = "KAUST", url = "https://computationalsciences.org/" },
 ]
 links = [
-    { name = "Paper", url = "", icon = "pdf" },
+    # { name = "Paper", url = "", icon = "pdf" },
     { name = "arXiv", url = "https://arxiv.org/abs/2310.06644", icon = "ai" },
-    { name = "Video", url = "", icon = "youtube" },
-    { name = "Code", url = "https://github.com/InteractiveComputerGraphics/hyve", icon = "github" },
+    # { name = "Video", url = "", icon = "youtube" },
+    { name = "Code (Coming soon)", url = "https://github.com/InteractiveComputerGraphics/hyve", icon = "github" },
 ]
 _teaser_video = ""
 +++
