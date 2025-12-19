@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HYVE: Hybrid Vertex Encoder for Neural Distance Fields</title>
+    <link rel="stylesheet" href="https://hyve.physics-simulation.org/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Google Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-white text-gray-900 antialiased">
+    <div class="max-w-5xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl tracking-tight text-gray-900 md:text-6xl mb-6">
+                HYVE: Hybrid Vertex Encoder for Neural Distance Fields
+            </h1>
+            
+            <!-- Authors -->
+            <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 mb-6 text-lg sm:text-xl">
+                
+                <div class="relative group">
+                    <a href="https:&#x2F;&#x2F;srjeske.de" class="text-blue-600 hover:text-blue-800 hover:underline">
+                        Stefan R. Jeske
+                    </a>
+                    <sup class="text-sm text-gray-500">
+                        1
+                    </sup>
+                </div>
+                
+                <div class="relative group">
+                    <a href="https:&#x2F;&#x2F;jonathank.de&#x2F;" class="text-blue-600 hover:text-blue-800 hover:underline">
+                        Jonathan Klein
+                    </a>
+                    <sup class="text-sm text-gray-500">
+                        2
+                    </sup>
+                </div>
+                
+                <div class="relative group">
+                    <a href="https:&#x2F;&#x2F;dmichels.de&#x2F;" class="text-blue-600 hover:text-blue-800 hover:underline">
+                        Dominik Michels
+                    </a>
+                    <sup class="text-sm text-gray-500">
+                        2
+                    </sup>
+                </div>
+                
+                <div class="relative group">
+                    <a href="https:&#x2F;&#x2F;animation.rwth-aachen.de&#x2F;person&#x2F;1&#x2F;" class="text-blue-600 hover:text-blue-800 hover:underline">
+                        Jan Bender
+                    </a>
+                    <sup class="text-sm text-gray-500">
+                        1
+                    </sup>
+                </div>
+                
+            </div>
+
+            <!-- Affiliations -->
+            <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 mb-8 text-base sm:text-lg text-gray-600">
+                
+                <div class="flex items-center gap-1">
+                    <sup>1</sup>
+                    <a href="https:&#x2F;&#x2F;animation.rwth-aachen.de&#x2F;" class="hover:text-gray-900">RWTH Aachen University</a>
+                </div>
+                
+                <div class="flex items-center gap-1">
+                    <sup>2</sup>
+                    <a href="https:&#x2F;&#x2F;computationalsciences.org&#x2F;" class="hover:text-gray-900">KAUST</a>
+                </div>
+                
+            </div>
+
+            <!-- Links -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                
+                <a href="https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2310.06644" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-gray-900 hover:bg-gray-800 shadow-lg transition-all hover:-translate-y-0.5">
+                    
+                        <i class="ai ai-arxiv mr-2"></i>
+                    
+                    arXiv
+                </a>
+                
+                <a href="https:&#x2F;&#x2F;github.com&#x2F;InteractiveComputerGraphics&#x2F;hyve" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-gray-900 hover:bg-gray-800 shadow-lg transition-all hover:-translate-y-0.5">
+                    
+                        <i class="fab fa-github mr-2"></i>
+                    
+                    Code (Coming soon)
+                </a>
+                
+            </div>
+        </header>
+
+        <!-- Teaser -->
+        
+
+        <!-- Content -->
+        <main class="prose prose-gray mx-auto text-justify">
+            <h1 id="abstract">Abstract</h1>
+<p>Neural shape representation generally refers to representing 3D geometry using neural networks, e.g., computing a signed distance or occupancy value at a specific spatial position.
+In this paper we present a neural-network architecture suitable for accurate encoding of 3D shapes in a single forward pass.
+Our architecture is based on a multi-scale hybrid system incorporating graph-based and voxel-based components, as well as a continuously differentiable decoder.
+The hybrid system includes a novel way of voxelizing point-based features in neural networks by projecting the point "feature-field" onto a grid.
+This projection is insensitive to local point density, and we show that it can be used to obtain smoother and more detailed reconstructions, in particular when combined with oriented point clouds as input.
+Our architecture also requires only a single forward pass, instead of the latent-code optimization used in auto-decoder methods.
+Furthermore, our network is trained to solve the well-established eikonal equation and only requires knowledge of the zero-level set for training and inference.
+We additionally propose a modification to the aforementioned loss function for the case that surface normals are not well defined, e.g., in the context of non-watertight surfaces and non-manifold geometry.
+Overall, our method consistently outperforms other baselines on the surface reconstruction task across a wide variety of datasets, while being more computationally efficient and requiring fewer parameters.</p>
+<h2 id="more-coming-soon">More coming soon!</h2>
+<h1 id="bibtex">BibTeX</h1>
+<pre data-lang="bibtex" style="background-color:#2b303b;color:#c0c5ce;" class="language-bibtex "><code class="language-bibtex" data-lang="bibtex"><span style="color:#b48ead;">@misc</span><span>{jeskeHYVEHybridVertex2024,
+</span><span>  </span><span style="color:#a3be8c;">title </span><span>= {</span><span style="color:#a3be8c;">{{HYVE}}: {{Hybrid Vertex Encoder}} for {{Neural Distance Fields}}</span><span>},
+</span><span>  </span><span style="color:#a3be8c;">author </span><span>= {</span><span style="color:#a3be8c;">Jeske, Stefan Rhys and Klein, Jonathan and Michels, Dominik L. and Bender, Jan</span><span>},
+</span><span>  </span><span style="color:#a3be8c;">year </span><span>= </span><span style="color:#d08770;">2024</span><span>,
+</span><span>  </span><span style="color:#a3be8c;">month </span><span>= aug,
+</span><span>  </span><span style="color:#a3be8c;">number </span><span>= {</span><span style="color:#a3be8c;">arXiv:2310.06644</span><span>},
+</span><span>  </span><span style="color:#a3be8c;">eprint </span><span>= {</span><span style="color:#a3be8c;">2310.06644</span><span>},
+</span><span>  </span><span style="color:#a3be8c;">primaryclass </span><span>= {</span><span style="color:#a3be8c;">cs</span><span>},
+</span><span>  </span><span style="color:#a3be8c;">doi </span><span>= {</span><span style="color:#a3be8c;">10.48550/arXiv.2310.06644</span><span>},
+</span><span>}
+</span></code></pre>
+
+        </main>
+
+        <footer class="mt-24 border-t border-gray-200 pt-12 pb-12 text-center text-gray-500">
+            <p>
+                This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="text-blue-600 hover:underline">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p class="mt-2">
+                Template inspired by <a href="https://github.com/nerfies/nerfies.github.io" class="text-blue-600 hover:underline">Nerfies</a>.
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
