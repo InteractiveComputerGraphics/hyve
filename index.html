@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HYVE: Hybrid Vertex Encoder for Neural Distance Fields</title>
+    <link rel="stylesheet" href="https://hyve.physics-simulation.org/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Google Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-white text-gray-900 antialiased">
+    <div class="max-w-5xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl tracking-tight text-gray-900 md:text-6xl mb-6">
+                HYVE: Hybrid Vertex Encoder for Neural Distance Fields
+            </h1>
+            
+            <!-- Authors -->
+            <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 mb-6 text-lg sm:text-xl">
+                
+                <div class="relative group">
+                    <a href="https:&#x2F;&#x2F;srjeske.de" class="text-blue-600 hover:text-blue-800 hover:underline">
+                        Stefan R. Jeske
+                    </a>
+                    <sup class="text-sm text-gray-500">
+                        1
+                    </sup>
+                </div>
+                
+                <div class="relative group">
+                    <a href="https:&#x2F;&#x2F;jonathank.de&#x2F;" class="text-blue-600 hover:text-blue-800 hover:underline">
+                        Jonathan Klein
+                    </a>
+                    <sup class="text-sm text-gray-500">
+                        2
+                    </sup>
+                </div>
+                
+                <div class="relative group">
+                    <a href="https:&#x2F;&#x2F;dmichels.de&#x2F;" class="text-blue-600 hover:text-blue-800 hover:underline">
+                        Dominik Michels
+                    </a>
+                    <sup class="text-sm text-gray-500">
+                        2
+                    </sup>
+                </div>
+                
+                <div class="relative group">
+                    <a href="https:&#x2F;&#x2F;animation.rwth-aachen.de&#x2F;person&#x2F;1&#x2F;" class="text-blue-600 hover:text-blue-800 hover:underline">
+                        Jan Bender
+                    </a>
+                    <sup class="text-sm text-gray-500">
+                        1
+                    </sup>
+                </div>
+                
+            </div>
+
+            <!-- Affiliations -->
+            <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 mb-8 text-base sm:text-lg text-gray-600">
+                
+                <div class="flex items-center gap-1">
+                    <sup>1</sup>
+                    <a href="https:&#x2F;&#x2F;animation.rwth-aachen.de&#x2F;" class="hover:text-gray-900">RWTH Aachen University</a>
+                </div>
+                
+                <div class="flex items-center gap-1">
+                    <sup>2</sup>
+                    <a href="https:&#x2F;&#x2F;computationalsciences.org&#x2F;" class="hover:text-gray-900">KAUST</a>
+                </div>
+                
+            </div>
+
+            <!-- Links -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                
+                <a href="2026-TVCG-HYVE.pdf" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-gray-900 hover:bg-gray-800 shadow-lg transition-all hover:-translate-y-0.5">
+                    
+                        <i class="fas fa-file-pdf mr-2"></i>
+                    
+                    Paper
+                </a>
+                
+                <a href="https:&#x2F;&#x2F;dx.doi.org&#x2F;10.1109&#x2F;TVCG.2026.3658870" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-gray-900 hover:bg-gray-800 shadow-lg transition-all hover:-translate-y-0.5">
+                    
+                        <i class="fas fa-link mr-2"></i>
+                    
+                    Version of Record
+                </a>
+                
+                <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=ykKsjeX2-0M" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-gray-900 hover:bg-gray-800 shadow-lg transition-all hover:-translate-y-0.5">
+                    
+                        <i class="fab fa-youtube mr-2"></i>
+                    
+                    Video
+                </a>
+                
+                <a href="https:&#x2F;&#x2F;github.com&#x2F;InteractiveComputerGraphics&#x2F;hyve" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-gray-900 hover:bg-gray-800 shadow-lg transition-all hover:-translate-y-0.5">
+                    
+                        <i class="fab fa-github mr-2"></i>
+                    
+                    Code
+                </a>
+                
+                <a href="https:&#x2F;&#x2F;huggingface.co&#x2F;datasets&#x2F;stefan-jeske&#x2F;hyve-datasets" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-gray-900 hover:bg-gray-800 shadow-lg transition-all hover:-translate-y-0.5">
+                    
+                        <i class="fas fa-database mr-2"></i>
+                    
+                    Data
+                </a>
+                
+            </div>
+        </header>
+
+        <!-- Teaser -->
+        
+        <div class="mb-16 rounded-xl overflow-hidden shadow-2xl border border-gray-200">
+            <video class="w-full" autoplay loop muted playsinline controls>
+                <source src="&#x2F;video&#x2F;objaverse_720p.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        
+
+        <!-- Content -->
+        <main class="prose prose-gray max-w-[80%] mx-auto text-justify">
+            <h2 id="paperclip-abstract">📎 Abstract</h2>
+
+<figure class="float-right ml-6 mb-4 w-full sm:w-[40%] md:w-[30%] !my-2">
+    <img src="https:&#x2F;&#x2F;hyve.physics-simulation.org&#x2F;processed_images&#x2F;representative_image.d909f6233c482f3f.png" alt="Representative Image" class="rounded-xl shadow-lg border border-gray-200 w-full mb-2">
+    
+        <figcaption class="text-sm text-gray-500 text-center italic">Reconstruction of a Beehive using our method.</figcaption>
+    
+</figure>
+<p>Neural shape representation generally refers to representing 3D geometry using neural networks, e.g., computing a signed distance or occupancy value at a specific spatial position.
+In this paper we present a neural-network architecture suitable for accurate encoding of 3D shapes in a single forward pass.
+Our architecture is based on a multi-scale hybrid system incorporating graph-based and voxel-based components, as well as a continuously differentiable decoder.
+The hybrid system includes a novel way of voxelizing point-based features in neural networks by projecting the point "feature-field" onto a grid.
+This projection is insensitive to local point density, and we show that it can be used to obtain smoother and more detailed reconstructions, in particular when combined with oriented point clouds as input.
+Our architecture also requires only a single forward pass, instead of the latent-code optimization used in auto-decoder methods.
+Furthermore, our network is trained to solve the well-established eikonal equation and only requires knowledge of the zero-level set for training and inference.
+We additionally propose a modification to the aforementioned loss function for the case that surface normals are not well defined, e.g., in the context of non-watertight surfaces and non-manifold geometry.
+Overall, our method consistently outperforms other baselines on the surface reconstruction task across a wide variety of datasets, while being more computationally efficient and requiring fewer parameters.</p>
+<h2 id="rocket-quickstart">🚀 Quickstart</h2>
+<p>Its very easy to get started with our method simply run the following commands</p>
+<pre data-lang="data-copy" class="language-data-copy "><code class="language-data-copy" data-lang="data-copy">git clone https:&#x2F;&#x2F;github.com&#x2F;InteractiveComputerGraphics&#x2F;hyve.git
+cd hyve
+uv sync
+
+# Download honeycomb model from HF and run inference using two different models
+.&#x2F;run_honeycomb.sh
+</code></pre>
+<p><em>Requires: Linux or Windows with CUDA</em></p>
+<h2 id="frame-photo-gallery">🖼️ Gallery</h2>
+<h3 id="feature-projection-vs-pooling">Feature Projection vs Pooling</h3>
+<div class="carousel relative w-full md:w-[120%] md:-ml-[10%] my-8 not-prose group">
+    <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4" style="scrollbar-width: thin;">
+    
+        <div class="snap-center shrink-0 w-[85%] sm:w-[70%] md:w-[60%] aspect-video bg-gray-100 rounded-xl overflow-hidden shadow-md border border-gray-200">
+            <video autoplay controls muted loop class="w-full h-full object-cover">
+                <source src="&#x2F;video&#x2F;thingi10k_proj.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    
+        <div class="snap-center shrink-0 w-[85%] sm:w-[70%] md:w-[60%] aspect-video bg-gray-100 rounded-xl overflow-hidden shadow-md border border-gray-200">
+            <video autoplay controls muted loop class="w-full h-full object-cover">
+                <source src="&#x2F;video&#x2F;armadillo_proj.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    
+        <div class="snap-center shrink-0 w-[85%] sm:w-[70%] md:w-[60%] aspect-video bg-gray-100 rounded-xl overflow-hidden shadow-md border border-gray-200">
+            <video autoplay controls muted loop class="w-full h-full object-cover">
+                <source src="&#x2F;video&#x2F;scannet_proj.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    
+        <div class="snap-center shrink-0 w-[85%] sm:w-[70%] md:w-[60%] aspect-video bg-gray-100 rounded-xl overflow-hidden shadow-md border border-gray-200">
+            <video autoplay controls muted loop class="w-full h-full object-cover">
+                <source src="&#x2F;video&#x2F;dragon_proj.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    
+        <div class="snap-center shrink-0 w-[85%] sm:w-[70%] md:w-[60%] aspect-video bg-gray-100 rounded-xl overflow-hidden shadow-md border border-gray-200">
+            <video autoplay controls muted loop class="w-full h-full object-cover">
+                <source src="&#x2F;video&#x2F;dfaust_proj.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    
+    </div>
+</div>
+<h3 id="comparison-to-related-work">Comparison to Related Work</h3>
+<div class="carousel relative w-full md:w-[120%] md:-ml-[10%] my-8 not-prose group">
+    <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4" style="scrollbar-width: thin;">
+    
+        <div class="snap-center shrink-0 w-[85%] sm:w-[70%] md:w-[60%] aspect-video bg-gray-100 rounded-xl overflow-hidden shadow-md border border-gray-200">
+            <video autoplay controls muted loop class="w-full h-full object-cover">
+                <source src="&#x2F;video&#x2F;thingi10k_comp.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    
+        <div class="snap-center shrink-0 w-[85%] sm:w-[70%] md:w-[60%] aspect-video bg-gray-100 rounded-xl overflow-hidden shadow-md border border-gray-200">
+            <video autoplay controls muted loop class="w-full h-full object-cover">
+                <source src="&#x2F;video&#x2F;armadillo_comp.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    
+        <div class="snap-center shrink-0 w-[85%] sm:w-[70%] md:w-[60%] aspect-video bg-gray-100 rounded-xl overflow-hidden shadow-md border border-gray-200">
+            <video autoplay controls muted loop class="w-full h-full object-cover">
+                <source src="&#x2F;video&#x2F;shapenet_comp.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    
+        <div class="snap-center shrink-0 w-[85%] sm:w-[70%] md:w-[60%] aspect-video bg-gray-100 rounded-xl overflow-hidden shadow-md border border-gray-200">
+            <video autoplay controls muted loop class="w-full h-full object-cover">
+                <source src="&#x2F;video&#x2F;scannet_comp.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    
+        <div class="snap-center shrink-0 w-[85%] sm:w-[70%] md:w-[60%] aspect-video bg-gray-100 rounded-xl overflow-hidden shadow-md border border-gray-200">
+            <video autoplay controls muted loop class="w-full h-full object-cover">
+                <source src="&#x2F;video&#x2F;dragon_comp.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    
+        <div class="snap-center shrink-0 w-[85%] sm:w-[70%] md:w-[60%] aspect-video bg-gray-100 rounded-xl overflow-hidden shadow-md border border-gray-200">
+            <video autoplay controls muted loop class="w-full h-full object-cover">
+                <source src="&#x2F;video&#x2F;dfaust_comp.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    
+    </div>
+</div>
+<h2 id="page-with-curl-paper">📃 Paper</h2>
+<p>You can view the paper below or download it via the link at the top.</p>
+<div class="w-full aspect-[8.5/11] md:aspect-[4/3] not-prose my-8">
+    <object data="2026-TVCG-HYVE.pdf" type="application/pdf" class="w-full h-full rounded-xl shadow-xl border border-gray-200">
+        <div class="flex flex-col items-center justify-center h-full bg-gray-50 text-gray-500 gap-2">
+            <p>Unable to display PDF file.</p>
+            <a href="2026-TVCG-HYVE.pdf" class="text-blue-600 hover:underline font-medium">Download</a> 
+        </div>
+    </object>
+</div>
+<h2 id="scroll-bibtex">📜 BibTeX</h2>
+<pre data-lang="bibtex" class="language-bibtex "><code class="language-bibtex" data-lang="bibtex">@article{jeskeHYVEHybridVertex2026,
+  title = {{{HYVE}}: {{Hybrid Vertex Encoder}} for {{Neural Distance Fields}}},
+  shorttitle = {{{HYVE}}},
+  author = {Jeske, Stefan R. and Klein, Jonathan and Michels, Dominik and Bender, Jan},
+  year = 2026,
+  journal = {IEEE Transactions on Visualization and Computer Graphics},
+  pages = {1--12},
+  doi = {10.1109&#x2F;TVCG.2026.3658870},
+  copyright = {https:&#x2F;&#x2F;ieeexplore.ieee.org&#x2F;Xplorehelp&#x2F;downloads&#x2F;license-information&#x2F;IEEE.html}
+}
+</code></pre>
+
+        </main>
+
+        <footer class="mt-24 border-t border-gray-200 pt-12 pb-12 text-center text-gray-500">
+            <p>
+                This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="text-blue-600 hover:underline">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p class="mt-2">
+                Template inspired by <a href="https://github.com/nerfies/nerfies.github.io" class="text-blue-600 hover:underline">Nerfies</a>.
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
