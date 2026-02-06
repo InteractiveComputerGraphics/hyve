@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "build": "tailwindcss -i styles/input.css -o static/style.css --minify",
-    "dev": "tailwindcss -i styles/input.css -o static/style.css --watch"
+    "dev": "tailwindcss -i styles/input.css -o static/style.css --watch --minify"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.18",

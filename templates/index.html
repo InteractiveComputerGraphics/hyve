@@ -70,15 +70,15 @@
         <!-- Teaser -->
         {% if section.extra.teaser_video %}
         <div class="mb-16 rounded-xl overflow-hidden shadow-2xl border border-gray-200">
-            <video class="w-full" autoplay loop muted playsinline>
-                <source src="{{ section.extra.teaser_video }}" type="video/mp4">
+            <video class="w-full" autoplay loop muted playsinline controls>
+                <source src="{{ section.extra.teaser_video }}" type="video/webm">
                 Your browser does not support the video tag.
             </video>
         </div>
         {% endif %}
 
         <!-- Content -->
-        <main class="prose prose-gray mx-auto text-justify">
+        <main class="prose prose-gray max-w-[80%] mx-auto text-justify">
             {{ section.content | safe }}
         </main>
 

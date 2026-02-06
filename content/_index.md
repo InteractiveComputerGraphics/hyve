@@ -14,15 +14,16 @@ affiliations = [
     { name = "KAUST", url = "https://computationalsciences.org/" },
 ]
 links = [
-    # { name = "Paper", url = "", icon = "pdf" },
-    { name = "arXiv", url = "https://arxiv.org/abs/2310.06644", icon = "ai" },
-    # { name = "Video", url = "", icon = "youtube" },
-    { name = "Code (Coming soon)", url = "https://github.com/InteractiveComputerGraphics/hyve", icon = "github" },
+    { name = "Paper", url = "2026-TVCG-HYVE.pdf", icon = "pdf" },
+    { name = "Version of Record", url = "https://dx.doi.org/10.1109/TVCG.2026.3658870", icon = "" },
+    { name = "Video", url = "https://www.youtube.com/watch?v=ykKsjeX2-0M", icon = "youtube" },
+    { name = "Code", url = "https://github.com/InteractiveComputerGraphics/hyve", icon = "github" },
+    { name = "Data", url = "https://huggingface.co/datasets/stefan-jeske/hyve-datasets", icon = "data" },
 ]
-_teaser_video = ""
+teaser_video = "/video/objaverse_720p.webm"
 +++
 
-# Abstract
+## :paperclip: Abstract
 
 Neural shape representation generally refers to representing 3D geometry using neural networks, e.g., computing a signed distance or occupancy value at a specific spatial position. 
 In this paper we present a neural-network architecture suitable for accurate encoding of 3D shapes in a single forward pass.
@@ -34,9 +35,38 @@ Furthermore, our network is trained to solve the well-established eikonal equati
 We additionally propose a modification to the aforementioned loss function for the case that surface normals are not well defined, e.g., in the context of non-watertight surfaces and non-manifold geometry.
 Overall, our method consistently outperforms other baselines on the surface reconstruction task across a wide variety of datasets, while being more computationally efficient and requiring fewer parameters.
 
-## More coming soon!
+## :rocket: Quickstart
 
-# BibTeX
+Its very easy to get started with our method simply run the following commands
+
+```sh,data-copy
+git clone https://github.com/InteractiveComputerGraphics/hyve.git
+cd hyve
+uv sync
+
+# Download honeycomb model from HF and run inference using two different models
+./run_honeycomb.sh
+```
+
+*Requires: Linux or Windows with CUDA*
+
+## :framed_picture: Gallery
+
+### Feature Projection vs Pooling
+
+{{ carousel(paths=["/video/thingi10k_proj.webm", "/video/armadillo_proj.webm", "/video/scannet_proj.webm",  "/video/dragon_proj.webm", "/video/dfaust_proj.webm"]) }}
+
+### Comparison to Related Work
+
+{{ carousel(paths=["/video/thingi10k_comp.webm", "/video/armadillo_comp.webm", "/video/shapenet_comp.webm", "/video/scannet_comp.webm",  "/video/dragon_comp.webm", "/video/dfaust_comp.webm"]) }}
+
+## :page_with_curl: Paper
+
+You can view the paper below or download it via the link at the top.
+
+{{ pdf(path="2026-TVCG-HYVE.pdf") }}
+
+## :scroll: BibTeX
 
 ```bibtex
 @misc{jeskeHYVEHybridVertex2024,
