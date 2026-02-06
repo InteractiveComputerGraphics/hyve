@@ -26,6 +26,7 @@ class Objaverse(pl.LightningDataModule):
                  gt_mesh_dir: Optional[str] = None,
                  subsample: Optional[int] = None,
                  subsample_test: Optional[int] = None,
+                 save_input_pointcloud: Optional[str] = None,
                  in_memory: bool = False) -> None:
 
         super().__init__() 
@@ -42,6 +43,7 @@ class Objaverse(pl.LightningDataModule):
         self.subsample = subsample
         self.subsample_test = subsample_test
 
+        self.save_input_pointcloud = save_input_pointcloud
         self.in_memory = in_memory
 
         with open(train_split, 'r') as f:
@@ -72,16 +74,16 @@ class Objaverse(pl.LightningDataModule):
         return {'volume': 0, 'surface': data, 'id': int(idx)}
     
     def train_dataloader(self) -> TRAIN_DATALOADERS:
-        return DataLoader(DynamicDataset(self.train_files_list, knn_instead_of_mesh=self.knn_instead_of_mesh, subsample=self.subsample, in_memory=self.in_memory), batch_size=self.batch_size, shuffle=True, num_workers=self.num_workers, pin_memory=True)
+        return DataLoader(DynamicDataset(self.train_files_list, knn_instead_of_mesh=self.knn_instead_of_mesh, subsample=self.subsample, in_memory=self.in_memory, save_input_pointcloud=self.save_input_pointcloud), batch_size=self.batch_size, shuffle=True, num_workers=self.num_workers, pin_memory=True)
 
     def val_dataloader(self) -> TRAIN_DATALOADERS:
-        return DataLoader(DynamicDataset(self.test_files_list, knn_instead_of_mesh=self.knn_instead_of_mesh, in_memory=self.in_memory), batch_size=self.batch_size_test, num_workers=self.num_workers, pin_memory=True)
+        return DataLoader(DynamicDataset(self.test_files_list, knn_instead_of_mesh=self.knn_instead_of_mesh, in_memory=self.in_memory, save_input_pointcloud=self.save_input_pointcloud), batch_size=self.batch_size_test, num_workers=self.num_workers, pin_memory=True)
 
     def test_dataloader(self) -> TRAIN_DATALOADERS:
         if self.gt_mesh_files_list is None:
-            return DataLoader(DynamicDataset(self.test_files_list, knn_instead_of_mesh=self.knn_instead_of_mesh, in_memory=self.in_memory, subsample=self.subsample_test), batch_size=self.batch_size_test, num_workers=self.num_workers, pin_memory=True)
+            return DataLoader(DynamicDataset(self.test_files_list, knn_instead_of_mesh=self.knn_instead_of_mesh, in_memory=self.in_memory, subsample=self.subsample_test, save_input_pointcloud=self.save_input_pointcloud), batch_size=self.batch_size_test, num_workers=self.num_workers, pin_memory=True)
         else:
-            return DataLoader(DynamicDataset(self.gt_mesh_files_list, knn_instead_of_mesh=self.knn_instead_of_mesh, in_memory=self.in_memory, subsample=self.subsample_test, load_callback=Objaverse.load_gt_mesh), batch_size=self.batch_size_test, num_workers=self.num_workers, pin_memory=True)
+            return DataLoader(DynamicDataset(self.gt_mesh_files_list, knn_instead_of_mesh=self.knn_instead_of_mesh, in_memory=self.in_memory, subsample=self.subsample_test, load_callback=Objaverse.load_gt_mesh, save_input_pointcloud=self.save_input_pointcloud), batch_size=self.batch_size_test, num_workers=self.num_workers, pin_memory=True)
 
 
 

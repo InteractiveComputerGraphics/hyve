@@ -19,4 +19,4 @@ hf download stefan-jeske/hyve-datasets \
 # Beehive/Honeycomb
 python hyve/train.py --config models/objaverse/pic-normals.yaml  --config datasets/honey/honey.yaml --ckpt_path models/objaverse/pic-normals.ckpt --trainer.logger.save_dir experiments/honey/ --trainer.logger.version=honey --test_only
 # Select objaverse models
-python hyve/train.py --config models/objaverse/pic-normals.yaml --ckpt_path models/objaverse/pic-normals.ckpt --data.test_split=datasets/objaverse/test_teaser.json --test_only
+python hyve/train.py --config models/objaverse/pic-normals.yaml --ckpt_path models/objaverse/pic-normals.ckpt --data.test_split=datasets/objaverse/test_teaser.json --test_only --data.save_input_pointcloud=experiments/objaverse/input_points/

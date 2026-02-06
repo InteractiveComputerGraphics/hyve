@@ -14,6 +14,7 @@ class DynamicDataset:
                  knn_instead_of_mesh: Optional[int] = None,
                  noise_scale_normal: Optional[float] = None,
                  noise_scale_uniform: Optional[float] = None,
+                 save_input_pointcloud: Optional[str] = None,
                  in_memory: bool = False,
                  load_callback: Callable[[str], ProcessedDataItem] = lambda *x: torch.load(*x, weights_only=False)):
 
@@ -24,8 +25,12 @@ class DynamicDataset:
         self.knn_instead_of_mesh = knn_instead_of_mesh
         self.noise_scale_normal = noise_scale_normal
         self.noise_scale_uniform = noise_scale_uniform
+        self.save_input_pointcloud = save_input_pointcloud
         self.in_memory = in_memory
         self.load_callback = load_callback
+
+        if self.save_input_pointcloud is not None and not os.path.exists(self.save_input_pointcloud):
+            os.makedirs(self.save_input_pointcloud)
 
         self.data = []
         if self.in_memory:
@@ -62,5 +67,8 @@ class DynamicDataset:
             noise_offsets = torch.nn.functional.normalize(torch.rand(data['surface'].pos.shape[0], 3) * 2 - 1) * (torch.rand(data['surface'].pos.shape[0]) * 2 - 1)[:, None] * self.noise_scale_uniform
             data['surface'].update(Data(pos=data['surface'].pos + noise_offsets))
 
+        if self.save_input_pointcloud is not None:
+            import meshio
+            meshio.write_points_cells(f"{self.save_input_pointcloud}/input_{data['id']}.vtu", data['surface'].pos.cpu().numpy(), cells={"vertex": torch.arange(len(data['surface'].pos)).cpu().numpy().reshape(-1, 1)})
 
         return data
