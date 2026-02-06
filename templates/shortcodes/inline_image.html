@@ -1,0 +1,7 @@
+{% set image = resize_image(path=path | trim_start_matches(pat="/"), width=width | default(value=800), op="fit_width") %}
+<figure class="{% if side == 'left' %}float-left mr-6{% else %}float-right ml-6{% endif %} mb-4 w-full sm:w-[40%] md:w-[30%] !my-2">
+    <img src="{{ image.url }}" alt="{{ alt | default(value='') }}" class="rounded-xl shadow-lg border border-gray-200 w-full mb-2">
+    {% if caption %}
+        <figcaption class="text-sm text-gray-500 text-center italic">{{ caption }}</figcaption>
+    {% endif %}
+</figure>

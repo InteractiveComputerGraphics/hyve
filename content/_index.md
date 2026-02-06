@@ -25,6 +25,8 @@ teaser_video = "/video/objaverse_720p.webm"
 
 ## :paperclip: Abstract
 
+{{ inline_image(path="representative_image.png", width=600, alt="Representative Image", side="right", caption="Reconstruction of a Beehive using our method.") }}
+
 Neural shape representation generally refers to representing 3D geometry using neural networks, e.g., computing a signed distance or occupancy value at a specific spatial position. 
 In this paper we present a neural-network architecture suitable for accurate encoding of 3D shapes in a single forward pass.
 Our architecture is based on a multi-scale hybrid system incorporating graph-based and voxel-based components, as well as a continuously differentiable decoder. 
@@ -69,14 +71,14 @@ You can view the paper below or download it via the link at the top.
 ## :scroll: BibTeX
 
 ```bibtex
-@misc{jeskeHYVEHybridVertex2024,
+@article{jeskeHYVEHybridVertex2026,
   title = {{{HYVE}}: {{Hybrid Vertex Encoder}} for {{Neural Distance Fields}}},
-  author = {Jeske, Stefan Rhys and Klein, Jonathan and Michels, Dominik L. and Bender, Jan},
-  year = 2024,
-  month = aug,
-  number = {arXiv:2310.06644},
-  eprint = {2310.06644},
-  primaryclass = {cs},
-  doi = {10.48550/arXiv.2310.06644},
+  shorttitle = {{{HYVE}}},
+  author = {Jeske, Stefan R. and Klein, Jonathan and Michels, Dominik and Bender, Jan},
+  year = 2026,
+  journal = {IEEE Transactions on Visualization and Computer Graphics},
+  pages = {1--12},
+  doi = {10.1109/TVCG.2026.3658870},
+  copyright = {https://ieeexplore.ieee.org/Xplorehelp/downloads/license-information/IEEE.html}
 }
 ```
