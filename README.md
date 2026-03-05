@@ -56,7 +56,12 @@ To run a reconstruction on the honeycomb example using a pre-trained model:
 ./run_honeycomb.sh
 ```
 
-The reconstructions will be saved in `experiments/honey/*/reconstructions`.
+The reconstruction will be saved in `experiments/honey/*/reconstructions`.
+To visualize it with, e.g., Paraview, use:
+
+```sh
+paraview experiments/honey/normals/honey/reconstructions/256_sf_0.vtu
+```
 
 *Note: "Honeycomb" (https://skfb.ly/onPMp) by RISD Nature Lab is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).*
 
@@ -64,6 +69,13 @@ You can also generate all the examples from the teaser in the paper by running t
 
 ```sh
 ./run_teaser.sh
+```
+
+To visualize run:
+
+```sh
+paraview experiments/honey/pic-normals/honey/reconstructions/256_sf_0.vtu
+paraview experiments/objaverse/pic-normals/version_0/reconstructions/256_sf_*.vtu
 ```
 
 ### Training and Testing
