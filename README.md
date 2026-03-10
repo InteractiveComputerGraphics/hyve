@@ -10,9 +10,22 @@ HYVE is a hybrid neural implicit representation that encodes 3D geometry into a 
 ## 🔗 Links
 
 - [Paper PDF](https://srjeske.de/publications/2026-tvcg-hyve/JKMB26.pdf)
-- [Paper Website](hyve.physics-simulation.org)
+- [Paper Website](https://hyve.physics-simulation.org/)
 - [Supplemental Video (YouTube)](https://youtu.be/ykKsjeX2-0M)
 - [Datasets (HuggingFace Hub)](https://huggingface.co/datasets/stefan-jeske/hyve-datasets)
+
+## 💻 Requirements
+
+- Linux or Windows
+- CUDA-capable GPU (at least ~8GB VRAM)
+- CUDA Toolkit (`nvcc`)
+- C++ Compiler (`gcc`)
+
+Verfiy your compiler setup:
+```shell
+nvcc --version
+gcc --version
+```
 
 ## 🛠️ Installation/Setup
 
@@ -137,17 +150,4 @@ Models for the other datasets used in the paper, namely **ShapeNet V2**, **Dynam
   doi = {10.1109/TVCG.2026.3658870},
   copyright = {https://ieeexplore.ieee.org/Xplorehelp/downloads/license-information/IEEE.html}
 }
-```
-
-## 💻 Requirements
-
-- Linux or Windows
-- CUDA-capable GPU (at least ~8GB VRAM)
-- CUDA Toolkit (`nvcc`)
-- C++ Compiler (`gcc`)
-
-Verfiy your compiler setup:
-```shell
-nvcc --version
-gcc --version
 ```
