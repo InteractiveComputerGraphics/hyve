@@ -1,9 +1,20 @@
 # 🐝 HYVE - Hybrid Vertex Encoder for Neural Distance Fields
 
+[![DOI](https://img.shields.io/badge/DOI-10.1109%2FTVCG.2026.3658870-blue?logo=doi)](https://doi.org/10.1109/TVCG.2026.3658870)
+[![IEEE TVCG](https://img.shields.io/badge/IEEE-TVCG-00629B?logo=ieee)](https://ieeexplore.ieee.org/document/11367343)
+[![Project Website](https://img.shields.io/badge/Project-Website-1f6feb)](https://hyve.physics-simulation.org)
+[![Datasets](https://img.shields.io/badge/Datasets-HuggingFace-ffd21e?logo=huggingface&logoColor=black)](https://huggingface.co/datasets/stefan-jeske/hyve-datasets)
+[![Python](https://img.shields.io/badge/Python-3.11%20%7C%203.12%20%7C%203.13-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+<a href="http://www.replicabilitystamp.org#https-github-com-interactivecomputergraphics-hyve"><img src="https://www.replicabilitystamp.org/logo/Reproducibility-small.png"></a>
+
+
 HYVE is a hybrid neural implicit representation that encodes 3D geometry into a latent grid via a hybrid graph and grid neural network encoder and decodes it at specified positions into a signed distance field (SDF). It is trained fully unsupervised (using the Eikonal equation) and is able to deal well with varying point densities, point counts and point connectivity. If you have any trouble or want to ask a question, feel free to reach out by [mail](mailto:contact@srjeske.de) or to [open an issue](https://github.com/InteractiveComputerGraphics/hyve/issues/new).
 
 ## 📢 News
 
+- **[2026/03/19]** 🏅 The Graphics Replicability Stamp Initiative has awarded our paper with the Replicability Stamp, confirming the reproducibility of our results!
 - **[2026/02/06]** 🎉 Initial code release.
 - **[2026/01/28]** 📝 Paper accepted at [IEEE TVCG](https://ieeexplore.ieee.org/document/11367343)!
 
