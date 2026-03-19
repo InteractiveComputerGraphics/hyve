@@ -4,7 +4,7 @@
 [![IEEE TVCG](https://img.shields.io/badge/IEEE-TVCG-00629B?logo=ieee)](https://ieeexplore.ieee.org/document/11367343)
 [![Project Website](https://img.shields.io/badge/Project-Website-1f6feb)](https://hyve.physics-simulation.org)
 [![Datasets](https://img.shields.io/badge/Datasets-HuggingFace-ffd21e?logo=huggingface&logoColor=black)](https://huggingface.co/datasets/stefan-jeske/hyve-datasets)
-[![Python](https://img.shields.io/badge/Python-3.11%20%7C%203.12%20%7C%203.13-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.11%20%7C%203.12%20-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 <a href="http://www.replicabilitystamp.org#https-github-com-interactivecomputergraphics-hyve"><img src="https://www.replicabilitystamp.org/logo/Reproducibility-small.png"></a>
@@ -21,9 +21,22 @@ HYVE is a hybrid neural implicit representation that encodes 3D geometry into a 
 ## 🔗 Links
 
 - [Paper PDF](https://srjeske.de/publications/2026-tvcg-hyve/JKMB26.pdf)
-- [Paper Website](hyve.physics-simulation.org)
+- [Paper Website](https://hyve.physics-simulation.org/)
 - [Supplemental Video (YouTube)](https://youtu.be/ykKsjeX2-0M)
 - [Datasets (HuggingFace Hub)](https://huggingface.co/datasets/stefan-jeske/hyve-datasets)
+
+## 💻 Requirements
+
+- Linux or Windows
+- CUDA-capable GPU (at least ~8GB VRAM)
+- CUDA Toolkit (`nvcc`)
+- C++ Compiler (`gcc`)
+
+Verfiy your compiler setup:
+```shell
+nvcc --version
+gcc --version
+```
 
 ## 🛠️ Installation/Setup
 
@@ -67,7 +80,12 @@ To run a reconstruction on the honeycomb example using a pre-trained model:
 ./run_honeycomb.sh
 ```
 
-The reconstructions will be saved in `experiments/honey/*/reconstructions`.
+The reconstruction will be saved in `experiments/honey/*/reconstructions`.
+To visualize it with, e.g., Paraview, use:
+
+```sh
+paraview experiments/honey/normals/honey/reconstructions/256_sf_0.vtu
+```
 
 *Note: "Honeycomb" (https://skfb.ly/onPMp) by RISD Nature Lab is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).*
 
@@ -75,6 +93,13 @@ You can also generate all the examples from the teaser in the paper by running t
 
 ```sh
 ./run_teaser.sh
+```
+
+To visualize run:
+
+```sh
+paraview experiments/honey/pic-normals/honey/reconstructions/256_sf_0.vtu
+paraview experiments/objaverse/pic-normals/version_0/reconstructions/256_sf_*.vtu
 ```
 
 ### Training and Testing
@@ -136,17 +161,4 @@ Models for the other datasets used in the paper, namely **ShapeNet V2**, **Dynam
   doi = {10.1109/TVCG.2026.3658870},
   copyright = {https://ieeexplore.ieee.org/Xplorehelp/downloads/license-information/IEEE.html}
 }
-```
-
-## 💻 Requirements
-
-- Linux or Windows
-- CUDA-capable GPU (at least ~8GB VRAM)
-- CUDA Toolkit (`nvcc`)
-- C++ Compiler (`gcc`)
-
-Verfiy your compiler setup:
-```shell
-nvcc --version
-gcc --version
 ```
